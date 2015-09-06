@@ -1,0 +1,11 @@
+{application, ms, [
+    {description, "microservice example"},
+    {vsn, "0.1.0"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {mod, {ms_app, []}},
+    {env, []}
+]}.

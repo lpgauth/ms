@@ -1,0 +1,28 @@
+MsHttp = {ms_http, "0.1.0", {git, "https://github.com/lpgauth/ms_http.git", {branch, "dev"}}},
+MsKv = {ms_kv, "0.1.0", {git, "https://github.com/lpgauth/ms_kv.git", {branch, "dev"}}},
+MsLogger = {ms_logger, "0.1.0", {git, "https://github.com/lpgauth/ms_logger.git", {branch, "dev"}}},
+
+MapTypes = fun M([]) -> [];
+               M([ms_http | T]) ->
+                   [MsHttp | M(T)];
+               M([ms_kv | T]) ->
+                   [MsKv | M(T)];
+               M([ms_logger | T]) ->
+                   [MsLogger | M(T)]
+            end,
+
+UpdateDeps = fun(Config, NewDeps) ->
+    case lists:keyfind(deps, 1, Config) of
+        {deps, Deps} ->
+            NDeps = Deps ++ NewDeps,
+            lists:keyreplace(deps, 1, Config, {deps, NDeps});
+        false ->
+            Config ++ [{deps, NewDeps}]
+    end
+end,
+
+{ok, Config} = file:script("config/dev.config"),
+{ms_base, BaseConfig} = lists:keyfind(ms_base, 1, Config),
+{local_resource_types, Types} = lists:keyfind(local_resource_types, 1, BaseConfig),
+
+UpdateDeps(CONFIG, MapTypes(Types)).

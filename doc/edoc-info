@@ -1,0 +1,4 @@
+%% encoding: UTF-8
+{application,ms}.
+{packages,[]}.
+{modules,[ms_app,ms_sup]}.
