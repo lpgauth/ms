@@ -1,6 +1,6 @@
-MsHttp = {ms_http, "0.1.0", {git, "https://github.com/lpgauth/ms_http.git", {branch, "dev"}}},
-MsKv = {ms_kv, "0.1.0", {git, "https://github.com/lpgauth/ms_kv.git", {branch, "dev"}}},
-MsLogger = {ms_logger, "0.1.0", {git, "https://github.com/lpgauth/ms_logger.git", {branch, "dev"}}},
+MsHttp = {ms_http, "0.1.0", {git, "https://github.com/lpgauth/ms_http.git", {branch, "master"}}},
+MsKv = {ms_kv, "0.1.0", {git, "https://github.com/lpgauth/ms_kv.git", {branch, "master"}}},
+MsLogger = {ms_logger, "0.1.0", {git, "https://github.com/lpgauth/ms_logger.git", {branch, "master"}}},
 
 MapTypes = fun M([]) -> [];
                M([ms_http | T]) ->
