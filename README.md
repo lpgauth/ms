@@ -23,26 +23,26 @@ server: Cowboy
 date: Wed, 09 Sep 2015 00:51:41 GMT
 content-length: 0
 content-type: text/plain
-x-response-time: 36414
+x-response-time: 354
 
 
-curl -i -X GET    'http://127.0.0.1:8080/api/v1/kv/foo'
+curl -i -X GET 'http://127.0.0.1:8080/api/v1/kv/foo'
 HTTP/1.1 200 OK
 server: Cowboy
 date: Wed, 09 Sep 2015 00:52:10 GMT
 content-length: 3
 content-type: text/plain
-x-response-time: 495
+x-response-time: 341
 
 bar
 
-curl -i -X GET    'http://127.0.0.1:8080/api/v1/kv/foo2'
+curl -i -X GET 'http://127.0.0.1:8080/api/v1/kv/foo2'
 HTTP/1.1 404 Not Found
 server: Cowboy
 date: Wed, 09 Sep 2015 00:52:29 GMT
 content-length: 0
 content-type: text/plain
-x-response-time: 447
+x-response-time: 418
 
 
 tail log/2015-09-09-00.log
@@ -59,7 +59,7 @@ server: Cowboy
 date: Wed, 09 Sep 2015 00:55:11 GMT
 content-length: 0
 content-type: text/plain
-x-response-time: 1502
+x-response-time: 336
 
 
 tail log/my_log.log
@@ -68,7 +68,7 @@ hello world
 
 ### status
 ```
-curl -i -X GET    'http://127.0.0.1:9090/status'
+curl -i -X GET 'http://127.0.0.1:9090/status'
 HTTP/1.1 200 OK
 server: Cowboy
 date: Wed, 09 Sep 2015 00:54:26 GMT
