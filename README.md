@@ -18,6 +18,7 @@ Erlang microservice example
 ### kv
 ```
 curl -i -X PUT -H 'Content-Type: text/plain' -d 'bar' 'http://127.0.0.1:8080/api/v1/kv/foo'
+
 HTTP/1.1 201 Created
 server: Cowboy
 date: Wed, 09 Sep 2015 00:51:41 GMT
@@ -27,6 +28,7 @@ x-response-time: 354
 
 
 curl -i -X GET 'http://127.0.0.1:8080/api/v1/kv/foo'
+
 HTTP/1.1 200 OK
 server: Cowboy
 date: Wed, 09 Sep 2015 00:52:10 GMT
@@ -37,6 +39,7 @@ x-response-time: 341
 bar
 
 curl -i -X GET 'http://127.0.0.1:8080/api/v1/kv/foo2'
+
 HTTP/1.1 404 Not Found
 server: Cowboy
 date: Wed, 09 Sep 2015 00:52:29 GMT
@@ -46,6 +49,7 @@ x-response-time: 418
 
 
 tail log/2015-09-09-00.log
+
 {"timestamp":1441759901896723,"method":"PUT","path":"/api/v1/kv/foo","found":false,"key":"foo","value":"bar"}
 {"timestamp":1441759930891798,"method":"GET","path":"/api/v1/kv/foo","found":true,"key":"foo","value":"bar"}
 {"timestamp":1441759950040894,"method":"GET","path":"/api/v1/kv/foo2","found":false,"key":"foo2"}
@@ -54,6 +58,7 @@ tail log/2015-09-09-00.log
 ### logger
 ```
 curl -i -X PUT -H 'Content-Type: text/plain' -d 'hello world' 'http://127.0.0.1:8080/api/v1/logger/my_log'
+
 HTTP/1.1 204 No Content
 server: Cowboy
 date: Wed, 09 Sep 2015 00:55:11 GMT
@@ -63,12 +68,14 @@ x-response-time: 336
 
 
 tail log/my_log.log
+
 hello world
 ```
 
 ### status
 ```
 curl -i -X GET 'http://127.0.0.1:9090/status'
+
 HTTP/1.1 200 OK
 server: Cowboy
 date: Wed, 09 Sep 2015 00:54:26 GMT
