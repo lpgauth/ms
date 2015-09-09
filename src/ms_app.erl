@@ -17,9 +17,14 @@
 -spec start() -> ok | {error, term()}.
 
 start() ->
+    application:load(statsderl),
+    BaseKey = [element(2, inet:gethostname()), <<".ms">>],
+    ok = application:set_env(statsderl, base_key, BaseKey),
+
     application:load(ms_base),
     Types = application:get_env(ms_base, local_resource_types, []),
     [application:ensure_all_started(App) || App <- Types],
+
     application:start(?APP).
 
 -spec stop() -> ok | {error, {not_started, ?APP}}.

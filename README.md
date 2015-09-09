@@ -95,6 +95,26 @@ content-type: application/json
 }
 ```
 
+### monitoring (statsd)
+```
+curl -X GET 'http://127.0.0.1:8080/api/v1/kv/foo'
+bar
+
+sudo ngrep -q -W single -d lo0 port 8125
+interface: lo0 (127.0.0.0/255.0.0.0)
+filter: (ip or ip6) and ( port 8125 )
+
+U 127.0.0.1:52915 -> 127.0.0.1:8125 lpgauth.ms.ms_http_kv.request:1|g
+
+U 127.0.0.1:52915 -> 127.0.0.1:8125 lpgauth.ms.ms_kv.get.call:1|g
+
+U 127.0.0.1:52915 -> 127.0.0.1:8125 lpgauth.ms.ms_kv.get.cache:1|g
+
+U 127.0.0.1:52915 -> 127.0.0.1:8125 lpgauth.ms.ms_logger.ok:1|g
+
+U 127.0.0.1:52915 -> 127.0.0.1:8125 lpgauth.ms.ms_http_logger.request:559|g
+```
+
 ## Tests
 
 ```makefile
